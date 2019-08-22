@@ -11,3 +11,19 @@ class Person{
     }
 }
 
+class Instructor extends Person{
+    constructor(props){
+        super(props);
+        this.specialty = props.specialty;
+        this.favLanguage = props.favLanguage;
+        this.cathPhrase = props.cathPhrase;
+    }
+
+    demo(subject){
+        return `Today we are learning about ${subject}`
+    }
+
+    grade(student, subject){
+        return `${student.name} receives a perfect score on ${subject}`
+    }
+}
