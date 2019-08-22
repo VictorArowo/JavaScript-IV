@@ -17,9 +17,8 @@ class Instructor extends Person{
         super(props);
         this.specialty = props.specialty;
         this.favLanguage = props.favLanguage;
-        this.cathPhrase = props.cathPhrase;
+        this.catchPhrase = props.catchPhrase;
     }
-
     demo(subject){
         return `Today we are learning about ${subject}`
     }
@@ -28,19 +27,34 @@ class Instructor extends Person{
         return `${student.name} receives a perfect score on ${subject}`
     }
 
-    modifyStudentPoints(student){
-        student.age += (Math.random() * (Math.random() > 0.5 ? 1 : -1) * 10);
+    modifyStudentPoints(student, maxValue){
+        student.grade += Math.floor(Math.random() * maxValue * (Math.random() > 0.5 ? 1 : -1));
+        if (student.grade > 100){
+            student.grade = 100;
+        } 
+        else if (student.grade < 0) {
+            student.grade = 0;
+        }
     }
 }
 
 
+const fred = new Instructor({
+    name: 'Fred',
+    age: 37,
+    location: 'Bedrock',
+    specialty: '.NET',
+    favLanguage: 'C#',
+    catchPhrase: "Wobadubadub"
+  });
+
 class Student extends Person{
     constructor(props){
         super(props);
+        this.grade = props.grade;
         this.previousBackground = props.previousBackgound;
         this.className = props.className;
         this.favsubjects = props.favSubjects;
-        this.grade = props.grade;
         this.isGraduated= false;
     }
 
@@ -63,6 +77,16 @@ class Student extends Person{
         }
     }
 }
+
+const mike = new Student({
+    name: 'mike',
+    age: 37,
+    grade: 80,
+    location: 'Bedrock',
+    previousBackgound: "none",
+    className: "eu3",
+    favSubjects: "js",
+  });
 
 
 class ProjectMananger extends Instructor{
