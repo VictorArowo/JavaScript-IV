@@ -27,6 +27,10 @@ class Instructor extends Person{
     grade(student, subject){
         return `${student.name} receives a perfect score on ${subject}`
     }
+
+    modifyStudentPoints(student){
+        student.age += (Math.random() * (Math.random() > 0.5 ? 1 : -1) * 10);
+    }
 }
 
 
@@ -36,6 +40,8 @@ class Student extends Person{
         this.previousBackground = props.previousBackgound;
         this.className = props.className;
         this.favsubjects = props.favSubjects;
+        this.grade = props.grade;
+        this.isGraduated= false;
     }
 
     listSubjects(){
@@ -43,11 +49,18 @@ class Student extends Person{
     }
 
     PRAssignment(subject){
-        console.log(`${this.name} has submitted a PR for ${subject}`)
+        console.log(`${this.name} has submitted a PR for ${subject}`);
     }
 
     sprintChallenge(subject){
-        console.log(`${this.name} has begun  sprint challenge for ${subject}`)
+        console.log(`${this.name} has begun  sprint challenge for ${subject}`);
+    }
+
+    graduate(){
+        if(this.grade >= 70){
+            this.isGraduated = true;
+            console.log(`${this.name} has graduated!`);
+        }
     }
 }
 
@@ -67,3 +80,4 @@ class ProjectMananger extends Instructor{
         console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
     }
 }
+
