@@ -11,6 +11,7 @@ class Person{
     }
 }
 
+
 class Instructor extends Person{
     constructor(props){
         super(props);
@@ -27,6 +28,7 @@ class Instructor extends Person{
         return `${student.name} receives a perfect score on ${subject}`
     }
 }
+
 
 class Student extends Person{
     constructor(props){
@@ -46,5 +48,22 @@ class Student extends Person{
 
     sprintChallenge(subject){
         console.log(`${this.name} has begun  sprint challenge for ${subject}`)
+    }
+}
+
+
+class ProjectMananger extends Instructor{
+    constructor(props){
+        super(props);
+        this.gradClassName = props.gradClassName;
+        this.favInstructor = props.favInstructor;
+    }
+
+    standUp(channel){
+        console.log(`${this.name} announces to ${channel}, @channel standy times!​​​​​`)
+    }
+
+    debugsCode(student, subject){
+        console.log(`${this.name} debugs ${student.name}'s code on ${subject}`)
     }
 }
